@@ -1,7 +1,7 @@
 public class Pessoa {
     private String nome;
     private Integer idade;
-    private EstadoCivil estadoCivil;
+    public EstadoCivil estadoCivil;
 
     enum EstadoCivil {
         SOLTEIRO, CASADO, VIUVO;
@@ -24,4 +24,22 @@ public class Pessoa {
     public EstadoCivil getEstadoCivil() {
         return estadoCivil;
     }
-}
+
+    public double descontoEstadoCivil(double valorBase){
+        double descontoEC = 0.0;
+
+        switch (estadoCivil){
+            case SOLTEIRO:
+                descontoEC = valorBase * (1 - 0.08);
+                break;
+            case CASADO:
+                descontoEC = valorBase * (1 - 0.025);
+                break;
+            case VIUVO:
+                descontoEC = valorBase * (1 - 0.05);
+                break;
+        }
+
+        return descontoEC;
+        }
+    }
